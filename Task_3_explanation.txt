@@ -1,0 +1,24 @@
+Task 3
+
+For Combining results from Task 1 and Task 3
+
+Since we assume that links with shallower depth are more important than deeper ones and
+within each webpage links appearing earlier should be crawled first, we will combine the two 
+lists based on level. we have two lists. List1 for Task 1 and List2 for Task 3. We will
+define a variable level for the class WebCrawler which will store the depth for each link.
+As we have used Breadth First Search, the order of the links in the list will be such that links 
+appearing earlier in the webpage will be entered firsdt in the list. Thus we can traverse the list
+in increasing order from index 0 to list length. 
+
+The pseudocode for merging the two lists for Task 1 and Task 3 is given below.
+
+for i in list1 and j in list2 
+ till there are elements in list1 or list2 
+  if list1[i].level == list2[j].level, then
+   add list1[i] to list3; i++
+   add list2[j] to list3; j++
+  else if list1[i].level < list2[j].level, then
+   add list1[i] to list3; i++
+  else
+   add list2[j] to list3; j++
+end for

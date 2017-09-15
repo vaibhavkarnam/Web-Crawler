@@ -1,0 +1,51 @@
+1. Breadth First Crawling
+
+ * It assumes that webpages in shallower depth are more important than deeper
+   ones and within an individual webpage, hyperlinks appearing earlier in the webpage
+   should be crawled first.
+ * The crawler first visits the seed URL, downloads the data and picks up all the hyperlinks in the seed URL. This is level 1.
+ * It then visits the first hyperlink in the seed URL, downloads the data and picks up all the hyperlinks from this URL. This is level 2
+ * This process is repeated till level 5 or when 1000 URLs are retrieved.
+ * In our progarm Breadth First Crawling is done using a queue implented using a linked list.
+ 
+ 
+ 2. Depth First Crawling
+  
+  * It assumes that webpages in deeper depth are more important than shallower ones and within an individual webpage,
+    hyperlinks appearing earlier in the webpage should be crawled first.
+  * The crawler first visits the seed URL, downloads the data and picks up the first hyperlink in the seed URL. This is level 1.
+  * It then visits the first hyperlink in the seed URL, downloads the data and picks up the first hyperlink in this URL. This is level 2.
+  * This process is repeated till level 5. Once in level 5, It downloads the data and picks up all the hyperlinks in this URL.
+  * It then returns to level 4, picks up all the hyperlinks in this URL. 
+  * After this, it returns to level 3 and picks up all the hyperlinks in this URL.
+  * This process is continued till it reaches level 1 or when 1000 URLs are retrieved.
+  
+  Breadth First Crawling crawled a total number of 207 URLs, on the other hand Depth First Crawling crawled a total number of 188 URLs.
+  
+  The Top 5 URls in Breadth First Crawling were :
+  1. https://en.wikipedia.org/wiki/Sustainable_energy
+  2. https://en.wikipedia.org/wiki/Passive_solar_building_design
+  3. https://en.wikipedia.org/wiki/Solar_energy
+  4. https://en.wikipedia.org/wiki/Solar_heating
+  5. https://en.wikipedia.org/wiki/Solar_photovoltaics
+
+  We can observe that https://en.wikipedia.org/wiki/Sustainable_energy is the seed URL and the other 4 URLs are hyperlinks extracted from the seed URL 
+  Webpage itself which is level 1. It will crawl level 2 which is https://en.wikipedia.org/wiki/Passive_solar_building_design only after extracting all 
+  the hyperlinks matching solar from level 1.
+  
+  The Top 5 URls in Depth First Crawling were :
+  1. https://en.wikipedia.org/wiki/Sustainable_energy
+  2. https://en.wikipedia.org/wiki/Passive_solar_building_design
+  3. https://en.wikipedia.org/wiki/Solar_energy
+  4. https://en.wikipedia.org/wiki/Solar_Energy_(journal)
+  5. https://en.wikipedia.org/wiki/Solar_heating
+  
+  In Depth First crawling we can observe that https://en.wikipedia.org/wiki/Sustainable_energy is the seed URL. 
+  https://en.wikipedia.org/wiki/Passive_solar_building_design is the first matching link in the seed URL. The crawler crawls this link which is level 2.
+  It picks up https://en.wikipedia.org/wiki/Solar_energy which is the first link in this level which is level 3 and crawls this. 
+  Then https://en.wikipedia.org/wiki/Solar_Energy_(journal) is found which is the first hyperlink in level 3 and this link is crawled.
+  Thus the crawler enters level4. Here the first link matching solar is https://en.wikipedia.org/wiki/Solar_heating.   
+  The crawler crawls this and thus enters level 5. Then all the links from level 5 are crawled which match the keyword solar. 
+  Then it returns back to level 4 and crawls all the hyperlinks matching solar. This process continues till it reaches level 1 or the limit of 
+  1000 URLs. Thus here the deeper hyperlinks are given more priority and are crawled first.
+  In our progarm Depth First Crawling is implemented using recursion.
